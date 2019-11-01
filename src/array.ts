@@ -17,25 +17,25 @@ export function eachSeries<T>(array: T[], iterator: (item: T, index: number, arr
     return next();
 }
 
-export function mapSeries<T, TReturn>(array: T[], iterator: (item: T) => Promise<TReturn>): Promise<TReturn[]> {
+export function mapSeries<T, TReturn>(array: T[], iterator: (item: T, index: number, array: T[]) => Promise<TReturn>): Promise<TReturn[]> {
     return new Promise((resolve, reject) => {
 
         const items = new Array<TReturn>();
-        eachSeries(array, async (item) => iterator(item).then(res => { items.push(res); }))
+        eachSeries(array, async (_item: T, _index: number, _array: T[]) => iterator(_item, _index, _array).then(res => { items.push(res); }))
             .then(() => resolve(items))
             .catch(reject);
     });
 }
 
-export function reduceSeries<TPrevItem extends object, TItem>(
+export function reduceSeries<TResult extends object, TItem>(
     array: TItem[],
-    iterator: (prevItem: TPrevItem, currentItem: TItem) => Promise<TPrevItem>,
-    initialValue: TPrevItem = (new Array()) as TPrevItem
-): Promise<TPrevItem> {
+    iterator: (result: TResult, currentItem: TItem) => Promise<TResult>,
+    initialValue: TResult = (new Array()) as TResult
+): Promise<TResult> {
     return new Promise((resolve, reject) => {
-        let prevItem: TPrevItem = initialValue;
-        eachSeries(array, async (currentItem) => iterator(prevItem, currentItem).then(res => { prevItem = res; }))
-            .then(() => resolve(prevItem))
+        let result: TResult = initialValue;
+        eachSeries(array, async (currentItem) => iterator(result, currentItem).then(res => { result = res; }))
+            .then(() => resolve(result))
             .catch(reject);
     });
 }
@@ -46,10 +46,9 @@ function defaultUniquePropsSelector<TItem extends TUniqueValue, TUniqueValue>(it
 
 type UniquePropSelectorFunction<TItem> = (item: TItem) => any;
 
-export function unique<TItem, TUniqueValue>(array: TItem[], propSelector: UniquePropSelectorFunction<TItem> = defaultUniquePropsSelector): TItem[] {
-    let uniqueValue: TUniqueValue;
+export function unique<TItem>(array: TItem[], propSelector: UniquePropSelectorFunction<TItem> = defaultUniquePropsSelector): TItem[] {
     return array.filter((item, index) => {
-        uniqueValue = propSelector(item);
+        const uniqueValue = propSelector(item);
         return array.findIndex((i => propSelector(i) === uniqueValue)) === index;
     });
 }

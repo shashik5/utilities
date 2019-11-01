@@ -1,13 +1,8 @@
+import { CallbackFunction, IMemoizeNode } from './types';
 import { isFunction, isObject } from '../common';
-import { CallbackFunction } from './types';
 
 const EMPTY_OBJECT = { isEmpty: true };
 const DICTIONARY: any = {};
-
-export interface IMemoizeNode {
-    map: WeakMap<object, IMemoizeNode>;
-    value?: any;
-}
 
 function createNode(): IMemoizeNode {
     return {
@@ -32,7 +27,7 @@ export function memoizeFunction<CB extends CallbackFunction<R>, R>(callback: CB,
     let rootNode = createNode();
     let cacheSize = 0;
 
-    return function memoizedFunction(...args: any[]): R {
+    return ((...args: any[]): R => {
         let currentNode: IMemoizeNode = rootNode;
 
         if (maxCacheSize > 0 && cacheSize > maxCacheSize) {
@@ -56,5 +51,5 @@ export function memoizeFunction<CB extends CallbackFunction<R>, R>(callback: CB,
         }
 
         return currentNode.value;
-    } as CB;
+    }) as CB;
 }
