@@ -53,12 +53,8 @@ describe('Common', () => {
     });
 
     describe('Function check', () => {
-        it('Valid function', () => {
+        it('Valid value', () => {
             assert.strictEqual(isFunction(() => ({})), true);
-        });
-
-        it('Valid arrow function', () => {
-            assert.strictEqual(isFunction(function () { }), true);
         });
 
         it('Invalid value', () => {
