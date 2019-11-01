@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "rootDir": "src",
+        "outDir": "dist",
+        "incremental": false,
+        "skipLibCheck": true,
+        "lib": [
+            "es2018"
+        ],
+        "target": "es5",
+        "module": "commonjs",
+        "declaration": true,
+        "sourceMap": true,
+        "strict": true,
+        "moduleResolution": "node",
+        "experimentalDecorators": true
+    },
+    "exclude": [
+        "dist",
+        "node_modules"
+    ]
+}

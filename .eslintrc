@@ -1,0 +1,131 @@
+{
+    "extends": [
+        "eslint:recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "rules": {
+        "semi": "error",
+        "block-scoped-var": "error",
+        "class-methods-use-this": "error",
+        "complexity": [
+            "error",
+            12
+        ],
+        "default-case": "error",
+        "default-param-last": [
+            "error"
+        ],
+        "dot-notation": "error",
+        "eqeqeq": "error",
+        "guard-for-in": "error",
+        "no-alert": "error",
+        "no-caller": "error",
+        "no-case-declarations": "error",
+        "no-else-return": "error",
+        "no-empty-function": "error",
+        "no-eval": "error",
+        "no-extra-bind": "error",
+        "no-extra-label": "error",
+        "no-lone-blocks": "error",
+        "no-multi-spaces": "error",
+        "no-return-assign": "error",
+        "no-unmodified-loop-condition": "error",
+        "no-undef": "off",
+        "no-unused-expressions": "error",
+        "no-unused-vars": "off",
+        "no-useless-concat": "error",
+        "no-useless-return": "error",
+        "no-shadow": "error",
+        "no-prototype-builtins": "off",
+        "no-use-before-define": "error",
+        "array-bracket-spacing": [
+            "error",
+            "never"
+        ],
+        "block-spacing": "error",
+        "comma-dangle": [
+            "error",
+            "never"
+        ],
+        "comma-spacing": [
+            "error",
+            {
+                "before": false,
+                "after": true
+            }
+        ],
+        "computed-property-spacing": [
+            "error",
+            "never"
+        ],
+        "consistent-this": [
+            "error",
+            "that"
+        ],
+        "eol-last": [
+            "error",
+            "never"
+        ],
+        "func-call-spacing": [
+            "error",
+            "never"
+        ],
+        "lines-between-class-members": [
+            "error",
+            "always"
+        ],
+        "max-len": [
+            "error",
+            {
+                "code": 200
+            }
+        ],
+        "no-lonely-if": "error",
+        "no-mixed-operators": "error",
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1
+            }
+        ],
+        "one-var-declaration-per-line": [
+            "error",
+            "always"
+        ],
+        "no-whitespace-before-property": "error",
+        "no-unneeded-ternary": "error",
+        "no-trailing-spaces": "error",
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "operator-assignment": [
+            "error",
+            "always"
+        ],
+        "sort-keys": "error",
+        "space-in-parens": [
+            "error",
+            "never"
+        ],
+        "arrow-body-style": [
+            "error",
+            "as-needed"
+        ],
+        "no-confusing-arrow": "error",
+        "no-duplicate-imports": "error",
+        "no-useless-constructor": "error",
+        "no-useless-rename": "error",
+        "no-var": "error",
+        "object-shorthand": "error",
+        "prefer-arrow-callback": "error",
+        "prefer-const": "error",
+        "sort-imports": "error",
+        "template-curly-spacing": "error"
+    }
+}
