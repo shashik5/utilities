@@ -1,6 +1,9 @@
 name: Publish Package
 
-on: release
+on: 
+  release:
+    tags:
+      - release-v**
 
 jobs:
   build:
