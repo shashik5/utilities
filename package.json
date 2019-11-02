@@ -1,6 +1,6 @@
 {
   "name": "@cybercat-io/utilities",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "A common reusable utility methods.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -8,7 +8,6 @@
     "build": "rimraf dist && tsc -p tsconfig.build.json",
     "fix-lint": "eslint src/**/* --fix",
     "lint": "eslint src/**/*",
-    "prepare": "npm run lint && npm run test && npm run build",
     "test": "mocha -r ts-node/register src/**/*.test.ts"
   },
   "repository": {

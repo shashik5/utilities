@@ -1,12 +1,12 @@
-name: Validate CI
+name: Validate Package
 
 on: 
   pull_request:
     branches:
-      - dev
+      - master
   push:
     branches:
-      - dev
+      - master
 
 jobs:
   build:
@@ -20,4 +20,6 @@ jobs:
     - name: Validate
       run: |
         npm i
-        npm run prepare
+        npm run lint
+        npm run test
+        npm run build

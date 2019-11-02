@@ -1,9 +1,6 @@
-name: Publish CI
+name: Publish Package
 
-on: 
-  push:
-    branches:
-      - master
+on: release
 
 jobs:
   build:
@@ -17,5 +14,7 @@ jobs:
     - name: Publish
       run: |
         npm i
-        npm run prepare
-        npm publish
+        npm run lint
+        npm run test
+        npm run build
+        npm publish --tag ${GITHUB_REF##*/}
