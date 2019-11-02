@@ -6,8 +6,8 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig.build.json",
-    "fix-lint": "eslint src/** --fix",
-    "lint": "eslint src/**",
+    "fix-lint": "eslint src/**/* --fix",
+    "lint": "eslint src/**/*",
     "prepare": "npm run lint && npm run test && npm run build",
     "test": "mocha -r ts-node/register src/**/*.test.ts"
   },
