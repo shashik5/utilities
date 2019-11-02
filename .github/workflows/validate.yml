@@ -15,7 +15,7 @@ jobs:
       with:
         node-version: 12.x
     - name: Validate
-      run: npm install
-      run: npm run lint
-      run: npm run test
-      run: npm run build
+    - run: npm install
+    - run: npm run lint
+    - run: npm run test
+    - run: npm run build
