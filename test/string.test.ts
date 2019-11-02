@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { toCamelCase, toPascalCase, combinePath } from './string';
+import { toCamelCase, toPascalCase, combinePath } from '../src/string';
 
 describe('String', () => {
     describe('To camel case', () => {

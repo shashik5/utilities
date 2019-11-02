@@ -1,4 +1,4 @@
-name: Publish Package
+name: Validate and Publish Package
 
 on: 
   release:

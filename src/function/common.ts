@@ -1,4 +1,4 @@
-import { CallbackFunction } from './types';
+import { CallbackFunction } from "./types";
 
 export function debounce<CB extends CallbackFunction>(callback: CB, wait: number) {
     let timerHandle: any;
