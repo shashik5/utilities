@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { ensureArray, eachSeries, mapSeries, reduceSeries, unique } from './array';
+import { ensureArray, eachSeries, mapSeries, reduceSeries, unique } from '../src/array';
 
 const list = [1, 2, 3, 4];
 async function asyncLoop(item: any) {

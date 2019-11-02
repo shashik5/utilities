@@ -1,20 +1,24 @@
-name: Publish Package
+name: Validate and Publish Package
 
-on: release
+on: 
+  release:
+    tags:
+      - release-v**
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js 12.x
       uses: actions/setup-node@v1
       with:
-        node-version: 12.x
-    - name: Publish
-      run: |
-        npm i
-        npm run lint
-        npm run test
-        npm run build
-        npm publish --tag ${GITHUB_REF##*/}
+        node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org'
+    - run: npm install
+    - run: npm run lint
+    - run: npm run test
+    - run: npm run build
+    - run: npm publish --tag ${GITHUB_REF##*/}
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
