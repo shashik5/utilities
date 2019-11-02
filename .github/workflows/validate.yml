@@ -14,7 +14,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
-    - name: Validate
     - run: npm install
     - run: npm run lint
     - run: npm run test
