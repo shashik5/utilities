@@ -1,12 +1,7 @@
-import * as deepmerge from 'deepmerge';
 import { v1 } from 'uuid';
 
 export function generateId() {
     return v1();
-}
-
-export function deepMerge<TValue extends Object>(...objects: TValue[]) {
-    return deepmerge.all(objects) as TValue;
 }
 
 const typeOfNumber = typeof 0;
