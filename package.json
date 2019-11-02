@@ -1,6 +1,6 @@
 {
   "name": "@cybercat-io/utilities",
-  "version": "1.0.3",
+  "version": "1.0.2",
   "description": "A common reusable utility methods.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
