@@ -1,4 +1,4 @@
-import { isArray } from './common';
+import { isArray } from "./common";
 
 export function ensureArray<TItem>(item: TItem | TItem[]) {
     return isArray(item) ? item : [item];
