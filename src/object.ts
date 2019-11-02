@@ -1,33 +1,25 @@
+import * as deepmerge from 'deepmerge';
 import { isArray, isObject } from './common';
 
-function checkProperties<T extends { [key: string]: any }>(a: T, b: T): boolean {
-    const keysOfA = Object.getOwnPropertyNames(a);
-    const keysOfB = Object.getOwnPropertyNames(b);
+interface IObject {
+    [key: string]: any;
+}
 
-    if (keysOfA.length !== keysOfB.length) {
-        return false;
-    }
+export function deepCompare(object1: IObject, object2: IObject): boolean {
+    const keysOfA = Object.getOwnPropertyNames(object1);
 
     return keysOfA.every(propName => {
-        const valueofA = a[propName];
-        const valueofB = b[propName];
+        const valueofA = object1[propName];
+        const valueofB = object2[propName];
 
         if (isObject(valueofA) || isArray(valueofA)) {
-            return checkProperties(valueofA, valueofB);
+            return deepCompare(valueofA, valueofB);
         }
 
-        if (!b.hasOwnProperty(propName) || valueofB !== valueofA) {
-            return false;
-        }
-
-        return true;
+        return (object2.hasOwnProperty(propName) && (valueofB === valueofA));
     });
 }
 
-export function deepCompare<T extends Object>(object1: T, object2: T, reverseCheck?: boolean) {
-    const flow = checkProperties(object1, object2);
-    if (reverseCheck) {
-        return flow && checkProperties(object2, object1);
-    }
-    return flow;
+export function deepMerge(...objects: Object[]) {
+    return deepmerge.all(objects);
 }

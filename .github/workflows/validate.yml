@@ -1,9 +1,12 @@
-name: Publish CI
+name: Validate CI
 
 on: 
+  pull_request:
+    branches:
+      - dev
   push:
     branches:
-      - master
+      - dev
 
 jobs:
   build:
@@ -14,8 +17,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
-    - name: Publish
+    - name: Validate
       run: |
         npm i
         npm run prepare
-        npm publish
