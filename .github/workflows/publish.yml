@@ -16,7 +16,7 @@ jobs:
         node-version: '12.x'
         registry-url: 'https://registry.npmjs.org'
     - name: Publish
-      run: npm i
+      run: npm install
       run: npm run lint
       run: npm run test
       run: npm run build
