@@ -1,6 +1,6 @@
 {
   "name": "@cybercat-io/utilities",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A common reusable utility methods.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -44,5 +44,9 @@
   "mocha": {
     "recursive": true,
     "timeout": 2000
-  }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ]
 }
