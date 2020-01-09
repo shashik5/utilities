@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { deepMerge, deepCompare } from '../src/object';
+import { deepMerge, deepCompare } from './object';
 
 describe('Object', () => {
     describe('Deepmerge', () => {

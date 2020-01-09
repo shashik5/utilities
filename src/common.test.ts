@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { generateId, isNumber, isString, isArray, isObject, isFunction, isNullOrUndefined } from '../src/common';
+import { generateId, isNumber, isString, isArray, isObject, isFunction, isNullOrUndefined } from './common';
 
 describe('Common', () => {
     describe('Generate Id', () => {

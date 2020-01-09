@@ -1,7 +1,7 @@
 import * as assert from 'assert';
-import { debounce } from '../src/function';
-import { throttle } from '../src/function/common';
-import { memoizeFunction } from '../src/function/memoizer';
+import { debounce } from './function';
+import { throttle } from './function/common';
+import { memoizeFunction } from './function/memoizer';
 
 describe('Function', () => {
     describe('Debounce', () => {
