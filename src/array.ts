@@ -4,7 +4,7 @@ export function ensureArray<TItem>(item: TItem | TItem[]) {
     return isArray(item) ? item : [item];
 }
 
-export function eachSeries<T>(array: T[], iterator: (item: T, index: number, array: T[]) => Promise<any>) {
+export function eachSeries<T>(array: T[], iterator: (item: T, index: number, _array: T[]) => Promise<any>) {
     let index = 0;
     async function next(): Promise<any> {
         if (index >= array.length) {
@@ -17,7 +17,7 @@ export function eachSeries<T>(array: T[], iterator: (item: T, index: number, arr
     return next();
 }
 
-export function mapSeries<T, TReturn>(array: T[], iterator: (item: T, index: number, array: T[]) => Promise<TReturn>): Promise<TReturn[]> {
+export function mapSeries<T, TReturn>(array: T[], iterator: (item: T, index: number, _array: T[]) => Promise<TReturn>): Promise<TReturn[]> {
     return new Promise((resolve, reject) => {
 
         const items = new Array<TReturn>();
@@ -40,7 +40,7 @@ export function reduceSeries<TResult extends object, TItem>(
     });
 }
 
-function defaultUniquePropsSelector<TItem extends TUniqueValue, TUniqueValue>(item: TItem): TUniqueValue {
+function defaultUniquePropsSelector<TItem>(item: TItem) {
     return item;
 }
 

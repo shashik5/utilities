@@ -22,7 +22,7 @@ function normalizeArg(val: any): object {
     return DICTIONARY[val];
 }
 
-export function memoizeFunction<CB extends CallbackFunction<R>, R>(callback: CB, maxCacheSize: number = 20): CB {
+export function memoizeFunction<R, CB extends CallbackFunction<R>>(callback: CB, maxCacheSize: number = 20): CB {
 
     let rootNode = createNode();
     let cacheSize = 0;
