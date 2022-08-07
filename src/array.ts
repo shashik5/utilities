@@ -1,4 +1,4 @@
-import { isArray } from './common';
+import { isArray, isString } from './common';
 
 export function ensureArray<TItem>(item: TItem | TItem[]) {
     return isArray(item) ? item : [item];
@@ -50,5 +50,41 @@ export function unique<TItem>(array: TItem[], propSelector: UniquePropSelectorFu
     return array.filter((item, index) => {
         const uniqueValue = propSelector(item);
         return array.findIndex((i => propSelector(i) === uniqueValue)) === index;
+    });
+}
+
+export function groupBy<TItem, TGroupKey = any, TGroupItem = any>
+    (array: TItem[], keySelector: (item: TItem) => TGroupKey, valueSelector: (item: TItem) => TGroupItem) {
+    return array.reduce((prev, curr) => {
+
+        const groupKey = keySelector(curr);
+        const groupValue = valueSelector(curr);
+
+        const groupItems = prev.get(groupKey) || new Set();
+
+        groupItems.add(groupValue);
+
+        prev.set(groupKey, groupItems);
+        return prev;
+    }, new Map<TGroupKey, Set<TGroupItem>>());
+}
+
+function compareValues<TItem>(left: TItem, right: TItem): number {
+    if (left === right) {
+        return 0;
+    }
+
+    if (isString(left) && isString(right)) {
+        return left.localeCompare(right, 'en', { sensitivity: 'base' }) > 0 ? 1 : -1;
+    }
+    return left > right ? 1 : -1;
+}
+
+export function sortBy<TItem>(array: TItem[], keySelector: (item: TItem) => any, descending: boolean = false) {
+    return array.slice().sort((a, b) => {
+        const left = keySelector(a);
+        const right = keySelector(b);
+        const result = compareValues(left, right);
+        return descending ? (result * -1) : result;
     });
 }
